@@ -2,3 +2,12 @@
     width:100%;
     text-align: center;
 }
+
+h3 {
+    letter-spacing: 0.2em;
+    font-weight: bold;
+}
+
+.c1 { color : #F2CC85; }
+.c2 { color : #F2784B; }
+.c3 { color : #BF2E21; }
