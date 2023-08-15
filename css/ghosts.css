@@ -8,6 +8,10 @@ h3 {
     font-weight: bold;
 }
 
+h1 {
+    font-size:150px;
+}
+
 .c1 { color : #F2CC85; }
 .c2 { color : #F2784B; }
 .c3 { color : #BF2E21; }
