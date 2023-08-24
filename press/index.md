@@ -1,7 +1,11 @@
-# Icelandic Game Developers announce new video game at GamesCom
+# Icelandic Game Developers announce new video game
 
-#### Phantom Spark, a time-trial racing game developed by Icelandic game studio Ghosts, debuts its first trailer.
-**Reykjavik, Iceland - 09/23/2023:** Ghosts is thrilled to unveil their all-new, momentum-based, time-trial racer, Phantom Spark, via a new trailer that debuted yesterday at the Future Game Show.
+*[Read in Icelandic](#slenskirleikjahnnuirkynnanjantlvuleikgamescomrstefnunnimyndband)*
+
+#### Phantom Spark debuts its first trailer.
+**Reykjavik, Iceland - 08/23/2023:** Ghosts is thrilled to unveil their all-new, momentum-based, time-trial racer, Phantom Spark, via a new trailer that debuted yesterday at the Future Game Show.
+
+
 
 #### The road to Gamescom
 The game has been in development since 2021 and is being developed by Torfi Asgeirsson and Joon Van Hove, founders of indie game studio Ghosts Ehf, out of their office in Hafnar.haus in Reykjavik. After successfully releasing their previous game NUTS in 2021, they secured a funding and publishing deal with the UK Games-publisher Coatsink. Two and a half years into development, the game has finally been announced to the public with its first trailer at Gamescom in Cologne
@@ -39,9 +43,8 @@ Ghosts is a new game development studio based in Reykjavik. Founding members Joo
 
 Joon and Torfi have each taught courses in game design and development at Reykjavik University and Listahaskolinn. Torfi is a founding member of Game Makers Iceland, a community organization which organizes meetups and provides online resources for game developers in Iceland.
 
-More info and pictures can be found on the [Steam Page](https://store.steampowered.com/app/1924180/Phantom_Spark/)
-
 Additional links
+- **[Phantom Spark on Steam](https://store.steampowered.com/app/1924180/Phantom_Spark/)**
 - [Ghosts website](http://ghosts.biz)
 - [Torfi’s website](https://torfi.itch.io)
 - [Joon’s website](http://joon.be)
@@ -50,6 +53,40 @@ Additional links
 
 $imgraw ghosts.jpg
 
+$space 25
+$imgrow ghosts38.jpg ghosts48.jpg ghosts52.jpg
+$space 25
+$imgrow ghosts59.jpg ghosts57.jpg ghosts62.jpg
 
+$space 50  
+<hr>
 
+# Íslenskir leikjahönnuðir kynna nýjan tölvuleik á GamesCom ráðstefnunni - myndband!
+#### Íslenska tölvuleikjaleikjafyrirtækið Ghosts gefur brátt út kappakstursleikinn Phantom Spark.
+Reykjavík - 23. Aug 2023: Leikjafyrirtækið Ghosts kynnir með stolti glænýjan, hraðfleygan tímatöku-kappakstursleik: Phantom Spark. Leikinn má sjá í glænýrri stiklu sem var frumsýnd á ‘Future Game Show’ viðburðinum á GamesCom í gær, sem er stærsta tölvuleikjaráðstefna Evrópu.  
 
+Ghosts samanstendur af Torfa Ásgeirssyni og Joon Van Hove en þeir hafa verið að vinna að leiknum Phantom Spark síðan 2021. Áður hafa þeir saman búið til og gefið út leikinn NUTS sem kom út á öllum helstu tölvuleikjamiðlum árið 2021. Phantom Spark er fjármagnaður og gefinn út af breska leikjaútgefandanum Coatsink en leikurinn hefur verið í framleiðslu í yfir tvö og hálft ár og var stiklan sýnd á GamesCom ráðstefnunni í Köln. 
+
+#### Phantom Spark - hreinn tíma kappakstursleikur
+Í Phantom Spark eru engin hraðatakmörk, þú ræður ferðinni hvort sem þú spilar ein eða með vinum. Brautirnar er snúnar og eina sem gildir er að fara sem hraðast í gegnum þær, hvernig sem þú ferð svo að því. Í Phantom Spark er hægt að spila sjálfur í gegnum stigmagnandi sögu, í spennandi sófaviðureignum við vini, eða sanna sig sem allra besti netspilarinn. Phantom Spark er væntanlegur á PC og Nintendo Switch snemma á næsta ári. 
+
+$youtube Q1FKWJVX5OE
+
+$space 50  
+
+#### Öðruvísi kappakstursleikur  
+Það er enginn kappakstursleikur á markaði í dag sem er einsog Phantom Spark. Þú þarft ekki að taka marga hringi á hverri braut heldur er hver braut stutt og snörp. Þegar að þú brunar áfram finnurðu hvernig hver bremsa, beygja og ígjöf skiptir máli í tímatöku. Hver einasta tilraun telur þar sem fullkomnun er aðeins náð með því að endurtaka leikinn og gera betur. 
+
+#### Hvert er framhaldið?
+Phantom Spark er á loka metrunum í framleiðslu, eftir nokkra mánuði verður leikurinn tilbúin með öllu sem fylgir, kappakstursbrautum, tónlist og útliti. Áður en leikurinn verður gefinn út verða fleiri þættir úr honum kynntir, meðal annars spilanleg prufa og fleiri stiklur. Hægt er að setja leikinn á óskalistann sinn hjá Steam og fylgjast með frekari uppfærslum á samfélagsmiðlum. Það styður leikjahönnuðina heilmikið þegar að margir setja leikinn á óskalista þar sem það eykur líkur á að leikurinn verður settur á forsíðu Steam þegar að hann er gefinn út. 
+
+#### Alþjóðlegt samstarf og viljinn til að vera lítið stúdíó
+Þó að fyrirtækið Ghosts samanstandi aðeins af þeim Torfa og Joon hafa alls 11 manns komið að þróunn Phantom Spark í mismunandi hlutverkum. Ghosts hefur yndi af að starfa í litlum nánum teymum, með því er hægt að einblína meira á leikinn og hægt að starfa með sérfræðingum allstaðar að. Fyrir utan Torfa og Joon er einn í teyminu í fullri vinnu en það er Joost Eggermont sem er listrænn stjórnandi og sér um allt útlit leiksins. Joost er staðsettur í Rotterdam, Hollandi. Aðrir sem hafa komið að leiknum eru búsettir í Noregi, Ástralíu, Þýskalandi, Bretlandi og Bandaríkjunum. Þetta vinnufyrirkomulag gerir Ghosts kleift að vinna með spennandi listafólki allstaðar að úr heiminum.
+
+#### Margverðlaunaðir sjálfstætt starfandi leikjasmiðir á Íslandi
+Fyrir Phantom Spark gáfu Joon og Torfi saman út leikinn NUTS (2021), ráðgátuleik þar sem spilarinn þarf að njósna um íkorna í afskekktum skógi. NUTS er ævintýraleikur þar sem virknin er að staðsetja myndavélar til að taka upp og komast að því hvað íkornar skógarins eru að gera. Leikurinn var kallaður “Firewatch fyrir David Attenborough aðdáendur” í leikjarýni Tech Radar
+Meðal annara viðurkenninga og verðlauna var NUTS valinn Leikur ársins á Norðurlöndunum á Nordic Game Conference í Malmö á síðasta ári. Leikurinn var gerður fyrir Apple Arcade en var seinna gefinn út á Steam og Nintendo Switch. Aðeins einn leikur hefur áður verið gerður á Íslandi sem hefur verið gefinn út á Nintendo leikjavél. Leikurinn var þróaður á fyrsta ári Covid faraldursins. 
+
+#### Um Ghosts
+Ghosts ehf er nýtt leikjastúdíó í Reykjavík. Stofnendur þess, Joon og Torfi hafa safnað saman hæfileika- og reynslu miklu teymi fyrir Phantom Spark, þar á meðal er Joost Eggermont sem er listrænn stjórnandi verkefnisins og sér um að útlit leiksins er með sterkum stíl. Áður hefur Ghosts ehf. gefið út leikin NUTS saman og þess fyrir utan hafa Torfi og Joon gefið út leikina The Professional, A Firm Handshake, Don’t Trip, Triple Agent og Out of the Loop
+Joon og Torfi hafa báðir kennt tölvuleikjagerð og hönnun við Háskóla Reykajvíkur og Listaháskóla Íslands. Torfi er einn af stofnendum Game Makers Iceland sem er samfélag tölvuleikjahönnuða og sér um að skipuleggja hittinga og taka saman og deila reynslu/gögnum fyrir íslenska leikjahönnuði.
