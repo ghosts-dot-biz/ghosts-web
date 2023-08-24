@@ -1,0 +1,47 @@
+Remember to flush the cache on Siteground whenever you do anything
+
+SSH on mac setup
+https://flassari.is/2016/07/setup-ssh-keys-on-mac/
+        Setup SSH keys on Mac
+        Generate SSH keys, defaults at ~/.ssh/id_rsa and id_rsa.pub
+
+        ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+        Run Mac’s ssh-add command (not ssh-agent), adds default keys if no key is specifed, -K adds passphrases to keychain.
+
+        ssh-add -K
+        Create a text file called ~/.ssh/config with this content:
+
+        Host *
+        UseKeychain yes
+        AddKeysToAgent yes
+        IdentityFile ~/.ssh/id_rsa
+
+https://tools.siteground.com/cacher?siteId=S2dIeVozaz0%3D
+
+How to SSH?
+
+- make a private key on siteground dashboard
+- save the passphrase!
+- copy private key from siteground
+- >>> touch ~/.ssh/[keyname.pem]
+- >>> code ~/.ssh/[keyname.pem]
+- paste, save (don't change linebreaks) called ~/.ssh/something.pem
+- sudo chmod 600 something.pem
+- ssh-add something.pem
+- ssh-add -K something.pem (stores the passphrase in keychain...)
+- ssh u185-hx3lgyl5ddtl@joon.be -p 18765
+
+EXPORT PUBLIC KEY -> you need the passphrase!
+- cd ~/.ssh
+- ssh-keygen -y -f [keyname.pem] > [keyname.pub]
+
+push files to server with RSYNC
+
+you can use --dry-run to try out stuff!!
+
+example:
+
+rsync --rsh='ssh -p18765' --dry-run --delete-after --progress --archive "../htdocs/" "u185-hx3lgyl5ddtl@joon.be:~/www/joon.be/public_html/"
+rsync [flags] [SRC] [DEST] 
+
+you can also just pull everything down first!
