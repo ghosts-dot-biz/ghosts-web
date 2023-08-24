@@ -1,3 +1,4 @@
+$title Ghosts - Press
 # Icelandic Game Developers announce new video game
 
 *[Read in Icelandic](#slenskirleikjahnnuirkynnanjantlvuleikgamescomrstefnunnimyndband)*
