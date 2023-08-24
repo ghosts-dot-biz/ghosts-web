@@ -44,7 +44,9 @@ Ghosts is a new game development studio based in Reykjavik. Founding members Joo
 
 Joon and Torfi have each taught courses in game design and development at Reykjavik University and Listahaskolinn. Torfi is a founding member of Game Makers Iceland, a community organization which organizes meetups and provides online resources for game developers in Iceland.
 
-Additional links
+Phantom Spark is being published in collaboration with [Coatsink](https://coatsink.com) and [Thunderful](http://thunderful.com).
+
+#### Additional links
 - **[Phantom Spark on Steam](https://store.steampowered.com/app/1924180/Phantom_Spark/)**
 - [Ghosts website](http://ghosts.biz)
 - [Torfi’s website](https://torfi.itch.io)
