@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Spark Leaderboards</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>
+        <div id="table-title"></div>
+    </h1>
+    <div id="table-container"></div>
+    <div id="links-container">
+        <ul id="link-list"></ul>
+    </div>
+    <script>
+        // Function to fetch CSV file and display it as HTML table
+        async function displayCSV(url) {
+            try {
+                const response = await fetch(url);
+                const csvData = await response.text();
+                const rows = csvData.split("\n");
+                let html = "<table>";
+
+                for (let i = 0; i < rows.length; i++) {
+                    html += "<tr>";
+                    const cells = rows[i].split(",");
+                    for (let j = 0; j < cells.length; j++) {
+
+                        if (j === 1) {
+                            const timeInSeconds = parseInt(cells[j]) / 1000;
+                            const hours = Math.floor(timeInSeconds / 3600);
+                            const minutes = Math.floor((timeInSeconds % 3600) / 60);
+                            const seconds = (timeInSeconds % 60).toFixed(3);
+                            let formattedTime = '';
+
+                            if (hours > 0) {
+                                formattedTime += `${hours}h `;
+                            }
+                            if (minutes > 0 || hours > 0) {
+                                formattedTime += `${minutes}m `;
+                            }
+                            formattedTime += `${seconds.toString().padStart(6,"0")}`;
+
+                            html += `<td>${formattedTime}</td>`;
+                        }
+                        else {
+                            html += `<td>${cells[j]}</td>`;
+                        }
+                    }
+                    html += "</tr>";
+                }
+
+
+                html += "</table>";
+
+                document.getElementById("table-container").innerHTML = html;
+            } catch (error) {
+                console.error("Error fetching CSV:", error);
+            }
+        }
+
+        function createLinkList() {
+            const links = [
+            { label: 'P1.1 - Stone', param: 'Mass_V2' }, { label: 'admin', param: 'Mass_V2_admin' },
+                { label: 'P1.2 - Ash', param: 'Frontier_V2' }, { label: 'admin', param: 'Frontier_V2_admin' },
+                { label: 'P1.3 - Heat', param: 'Iguana_V2' }, { label: 'admin', param: 'Iguana_V2_admin' },
+                { label: 'P1.4 - Smoke', param: 'Wings_V2' }, { label: 'admin', param: 'Wings_V2_admin' },
+                { label: 'P1.5 - Fire', param: 'Resin_V2' }, { label: 'admin', param: 'Resin_V2_admin' },
+                { label: 'P1.6 - Fissure', param: 'Blockade_V2' }, { label: 'admin', param: 'Blockade_V2_admin' },
+                { label: 'P1.7 - Crater', param: 'Exposure_V2' }, { label: 'admin', param: 'Exposure_V2_admin' },
+                { label: 'P1.8 - Dust', param: 'Optic_V2' }, { label: 'admin', param: 'Optic_V2_admin' },
+                { label: 'P1.9 - Ridge', param: 'Destiny_V2' }, { label: 'admin', param: 'Destiny_V2_admin' },
+                { label: 'P1.10 - Magma', param: 'Dream_V2' }, { label: 'admin', param: 'Dream_V2_admin' },
+                { label: 'E1.11 - Destiny', param: 'Fire_V3' }, { label: 'admin', param: 'Fire_V3_admin' },
+                { label: 'P2.1 - Rain', param: 'Verticon_V2' }, { label: 'admin', param: 'Verticon_V2_admin' },
+                { label: 'P2.2 - Flood', param: 'Bubble_V2' }, { label: 'admin', param: 'Bubble_V2_admin' },
+                { label: 'P2.3 - Stream', param: 'Solar_V2' }, { label: 'admin', param: 'Solar_V2_admin' },
+                { label: 'P2.4 - Wave', param: 'Parapet_V4' }, { label: 'admin', param: 'Parapet_V4_admin' },
+                { label: 'P2.5 - Cascade', param: 'Dagger_V2' }, { label: 'admin', param: 'Dagger_V2_admin' },
+                { label: 'P2.6 - Tide', param: 'Cloud2_V2' }, { label: 'admin', param: 'Cloud2_V2_admin' },
+                { label: 'P2.7 - Gale', param: 'Leaf_V2' }, { label: 'admin', param: 'Leaf_V2_admin' },
+                { label: 'P2.8 - Storm', param: 'Lemon_V2' }, { label: 'admin', param: 'Lemon_V2_admin' },
+                { label: 'P2.9 - Mist', param: 'Squid_V3' }, { label: 'admin', param: 'Squid_V3_admin' },
+                { label: 'P2.10 - Thunder', param: 'Gale_V2' }, { label: 'admin', param: 'Gale_V2_admin' },
+                { label: 'E2.11 - Valor', param: 'Rampart_V3' }, { label: 'admin', param: 'Rampart_V3_admin' },
+                { label: 'P3.1 - Sky', param: 'Dust1_V2' }, { label: 'admin', param: 'Dust1_V2_admin' },
+                { label: 'P3.2 - Moon', param: 'Swift1_V2' }, { label: 'admin', param: 'Swift1_V2_admin' },
+                { label: 'P3.3 - Eclipse', param: 'Alkaline_V3' }, { label: 'admin', param: 'Alkaline_V3_admin' },
+                { label: 'P3.4 - Sun', param: 'Orb_V3' }, { label: 'admin', param: 'Orb_V3_admin' },
+                { label: 'P3.5 - Aura', param: 'Rust_V2' }, { label: 'admin', param: 'Rust_V2_admin' },
+                { label: 'P3.6 - Beam', param: 'Temple_V2' }, { label: 'admin', param: 'Temple_V2_admin' },
+                { label: 'P3.7 - Cloud', param: 'Damage_V4' }, { label: 'admin', param: 'Damage_V4_admin' },
+                { label: 'P3.8 - Horizon', param: 'Storm_V2' }, { label: 'admin', param: 'Storm_V2_admin' },
+                { label: 'P3.9 - Dusk', param: 'Dark_V4' }, { label: 'admin', param: 'Dark_V4_admin' },
+                { label: 'P3.10 - Dawn', param: 'Lunar_V3' }, { label: 'admin', param: 'Lunar_V3_admin' },
+                { label: 'E3.11 - Serenity', param: 'Colossus_V4' }, { label: 'admin', param: 'Colossus_V4_admin' },
+                // Add more links as needed
+            ];
+
+            const linkList = document.getElementById('link-list');
+
+
+            for (let i = 0; i < links.length; i += 2) {
+
+                const link = links[i];
+
+                const listItem = document.createElement('li');
+                listItem.innerHTML =
+                    "<a href='?track=" + links[i].param + "'>" + link.label + "</a>&emsp;" +
+                    "<a href='?track=" + links[i].param + "_admin'>(admin)</a>&emsp;";
+                // const linkElem = document.createElement('a');
+                // linkElem.textContent = link.label;
+                // linkElem.href = `?track=${link.param}`;
+                // listItem.appendChild(linkElem);
+                // //linkList.appendChild(listItem);
+
+                // linkList.append("---");
+                // const link2 = links[i+1];
+                // const linkElem2 = document.createElement('a');
+                // linkElem2.textContent = link2.label;
+                // linkElem2.href = `?track=${link2.param}`;
+                // listItem.appendChild(linkElem2);
+                linkList.appendChild(listItem);
+            }
+        }
+
+
+        // URL of the CSV file
+        const urlParams = new URLSearchParams(window.location.search);
+        const trackParam = urlParams.get('track');
+        document.getElementById("table-title").innerHTML = trackParam;
+        const csvURL = "https://gliderushfunctions.blob.core.windows.net/webview/" + trackParam;
+
+        // Display the CSV as HTML table
+        createLinkList();
+        displayCSV(csvURL);
+    </script>
+</body>
+
+</html>
