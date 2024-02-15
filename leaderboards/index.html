@@ -127,8 +127,8 @@
 
                 const listItem = document.createElement('li');
                 listItem.innerHTML =
-                    "<a href='?track=" + links[i].param + "'>" + link.label + "</a>&emsp;" +
-                    "<a href='?track=" + links[i].param + "_admin'>(admin)</a>&emsp;";
+                    "<a href='?track=" + links[i].param + "&label=" + link.label + "'>" + link.label + "</a>&emsp;" +
+                    "<a href='?track=" + links[i].param + "_admin&label=" + link.label + "'>(admin)</a>&emsp;";
                 // const linkElem = document.createElement('a');
                 // linkElem.textContent = link.label;
                 // linkElem.href = `?track=${link.param}`;
@@ -149,7 +149,8 @@
         // URL of the CSV file
         const urlParams = new URLSearchParams(window.location.search);
         const trackParam = urlParams.get('track');
-        document.getElementById("table-title").innerHTML = trackParam;
+        const labelParam = urlParams.get('label');
+        document.getElementById("table-title").innerHTML = labelParam;
         const csvURL = "https://gliderushfunctions.blob.core.windows.net/webview/" + trackParam;
 
         // Display the CSV as HTML table
