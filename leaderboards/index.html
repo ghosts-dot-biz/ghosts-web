@@ -77,7 +77,8 @@ tr:hover {
     </div>
     <script>
         const links = [
-            { label: 'P1.1 - Stone', param: 'Mass_V2' }, { label: 'admin', param: 'Mass_V2_admin' },
+        
+                { label: 'P1.1 - Stone', param: 'Mass_V2' }, { label: 'admin', param: 'Mass_V2_admin' },
                 { label: 'P1.2 - Ash', param: 'Frontier_V2' }, { label: 'admin', param: 'Frontier_V2_admin' },
                 { label: 'P1.3 - Heat', param: 'Iguana_V2' }, { label: 'admin', param: 'Iguana_V2_admin' },
                 { label: 'P1.4 - Smoke', param: 'Wings_V2' }, { label: 'admin', param: 'Wings_V2_admin' },
@@ -110,6 +111,7 @@ tr:hover {
                 { label: 'P3.9 - Dusk', param: 'Dark_V4' }, { label: 'admin', param: 'Dark_V4_admin' },
                 { label: 'P3.10 - Dawn', param: 'Lunar_V3' }, { label: 'admin', param: 'Lunar_V3_admin' },
                 { label: 'E3.11 - Serenity', param: 'Colossus_V4' }, { label: 'admin', param: 'Colossus_V4_admin' },
+                { label: 'TOTAL SCORE', param: 'total' }
                 // Add more links as needed
             ];
 
@@ -168,9 +170,11 @@ tr:hover {
                 const link = links[i];
 
                 const listItem = document.createElement('li');
-                listItem.innerHTML =
-                    "<a href='?track=" + links[i].param + "&label=" + link.label + "'>" + link.label + "</a>&emsp;" +
-                    "<a href='?track=" + links[i].param + "_admin&label=" + link.label + "'>(admin)</a>&emsp;";
+                let html = "<a href='?track=" + links[i].param + "&label=" + link.label + "'>" + link.label + "</a>&emsp;";
+                if(i < links.length - 1)
+                    html += "<a href='?track=" + links[i].param + "_admin&label=" + link.label + "'>(admin)</a>&emsp;";
+
+                listItem.innerHTML = html;
                 linkList.appendChild(listItem);
             }
 
