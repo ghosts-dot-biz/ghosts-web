@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Spark Leaderboards</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>
+        <div id="table-title"></div>
+    </h1>
+    <div id="table-container"></div>
+    <div id="links-container">
+        <ul id="link-list"></ul>
+    </div>
+    <script>
+        // If this becomes a drag, there's a file called "tracklist" on the blob storage that gets generated as well
+        // so you could read that in...
+        const links = [
+        
+                { label: 'DEMO P1.1 - Stone', param: 'Mass_V2_DEMO' }, { label: 'admin', param: 'Mass_V2_admin' },
+                { label: 'DEMO P1.2 - Smoke', param: 'Wings_V2_DEMO' }, { label: 'admin', param: 'Wings_V2_DEMO_admin' },
+                { label: 'DEMO P1.3 - Magma', param: 'Dream_V2_DEMO' }, { label: 'admin', param: 'Dream_V2_DEMO_admin' },
+                { label: 'TOTAL SCORE DEMO', param: 'total_DEMO' }, { label: 'admin', param: 'total_DEMO' },
+                { label: 'P1.1 - Stone', param: 'Mass_V2' }, { label: 'admin', param: 'Mass_V2_admin' },
+                { label: 'P1.2 - Ash', param: 'Frontier_V2' }, { label: 'admin', param: 'Frontier_V2_admin' },
+                { label: 'P1.3 - Heat', param: 'Iguana_V2' }, { label: 'admin', param: 'Iguana_V2_admin' },
+                { label: 'P1.4 - Smoke', param: 'Wings_V2' }, { label: 'admin', param: 'Wings_V2_admin' },
+                { label: 'P1.5 - Fire', param: 'Resin_V2' }, { label: 'admin', param: 'Resin_V2_admin' },
+                { label: 'P1.6 - Fissure', param: 'Blockade_V2' }, { label: 'admin', param: 'Blockade_V2_admin' },
+                { label: 'P1.7 - Crater', param: 'Exposure_V2' }, { label: 'admin', param: 'Exposure_V2_admin' },
+                { label: 'P1.8 - Dust', param: 'Optic_V2' }, { label: 'admin', param: 'Optic_V2_admin' },
+                { label: 'P1.9 - Ridge', param: 'Destiny_V2' }, { label: 'admin', param: 'Destiny_V2_admin' },
+                { label: 'P1.10 - Magma', param: 'Dream_V2' }, { label: 'admin', param: 'Dream_V2_admin' },
+                { label: 'E1.11 - Destiny', param: 'Fire_V3' }, { label: 'admin', param: 'Fire_V3_admin' },
+                { label: 'P2.1 - Rain', param: 'Verticon_V2' }, { label: 'admin', param: 'Verticon_V2_admin' },
+                { label: 'P2.2 - Flood', param: 'Bubble_V2' }, { label: 'admin', param: 'Bubble_V2_admin' },
+                { label: 'P2.3 - Stream', param: 'Solar_V2' }, { label: 'admin', param: 'Solar_V2_admin' },
+                { label: 'P2.4 - Wave', param: 'Parapet_V4' }, { label: 'admin', param: 'Parapet_V4_admin' },
+                { label: 'P2.5 - Cascade', param: 'Dagger_V2' }, { label: 'admin', param: 'Dagger_V2_admin' },
+                { label: 'P2.6 - Tide', param: 'Cloud2_V2' }, { label: 'admin', param: 'Cloud2_V2_admin' },
+                { label: 'P2.7 - Gale', param: 'Leaf_V2' }, { label: 'admin', param: 'Leaf_V2_admin' },
+                { label: 'P2.8 - Storm', param: 'Lemon_V2' }, { label: 'admin', param: 'Lemon_V2_admin' },
+                { label: 'P2.9 - Mist', param: 'Squid_V3' }, { label: 'admin', param: 'Squid_V3_admin' },
+                { label: 'P2.10 - Thunder', param: 'Gale_V2' }, { label: 'admin', param: 'Gale_V2_admin' },
+                { label: 'E2.11 - Valor', param: 'Rampart_V3' }, { label: 'admin', param: 'Rampart_V3_admin' },
+                { label: 'P3.1 - Sky', param: 'Dust1_V2' }, { label: 'admin', param: 'Dust1_V2_admin' },
+                { label: 'P3.2 - Moon', param: 'Swift1_V2' }, { label: 'admin', param: 'Swift1_V2_admin' },
+                { label: 'P3.3 - Eclipse', param: 'Alkaline_V3' }, { label: 'admin', param: 'Alkaline_V3_admin' },
+                { label: 'P3.4 - Sun', param: 'Orb_V3' }, { label: 'admin', param: 'Orb_V3_admin' },
+                { label: 'P3.5 - Aura', param: 'Rust_V2' }, { label: 'admin', param: 'Rust_V2_admin' },
+                { label: 'P3.6 - Beam', param: 'Temple_V2' }, { label: 'admin', param: 'Temple_V2_admin' },
+                { label: 'P3.7 - Cloud', param: 'Damage_V4' }, { label: 'admin', param: 'Damage_V4_admin' },
+                { label: 'P3.8 - Horizon', param: 'Storm_V2' }, { label: 'admin', param: 'Storm_V2_admin' },
+                { label: 'P3.9 - Dusk', param: 'Dark_V4' }, { label: 'admin', param: 'Dark_V4_admin' },
+                { label: 'P3.10 - Dawn', param: 'Lunar_V3' }, { label: 'admin', param: 'Lunar_V3_admin' },
+                { label: 'E3.11 - Serenity', param: 'Colossus_V4' }, { label: 'admin', param: 'Colossus_V4_admin' },
+                { label: 'TOTAL SCORE', param: 'total' }
+                // Add more links as needed
+            ];
+
+
+        async function displayCSV(url) {
+            try {
+                const response = await fetch(url);
+                const csvData = await response.text();
+                const rows = csvData.split("\n");
+                let html = "<table>";
+
+                for (let i = 0; i < rows.length; i++) {
+                    html += "<tr>";
+                    const cells = rows[i].split(",");
+                    for (let j = 0; j < cells.length; j++) {
+
+                        if (j === 1) {
+                            const timeInSeconds = parseInt(cells[j]) / 1000;
+                            const hours = Math.floor(timeInSeconds / 3600);
+                            const minutes = Math.floor((timeInSeconds % 3600) / 60);
+                            const seconds = (timeInSeconds % 60).toFixed(3);
+                            let formattedTime = '';
+
+                            if (hours > 0) {
+                                formattedTime += `${hours}h `;
+                            }
+                            if (minutes > 0 || hours > 0) {
+                                formattedTime += `${minutes}m `;
+                            }
+                            formattedTime += `${seconds.toString().padStart(6,"0")}`;
+
+                            html += `<td>${formattedTime}</td>`;
+                        }
+                        else if (j === 2) {
+                            html += `<td><img class="flag" src="../flags/${cells[j].toLowerCase()}.png" /></td>`;
+                        }
+                        else {
+                            html += `<td>${cells[j]}</td>`;
+                        }
+                    }
+                    html += "</tr>";
+                }
+
+
+                html += "</table>";
+
+                document.getElementById("table-container").innerHTML = html;
+            } catch (error) {
+                console.error("Error fetching CSV:", error);
+            }
+        }
+
+        function createLinkList() {
+            const linkList = document.getElementById('link-list');
+
+
+            for (let i = 0; i < links.length; i += 2) {
+
+                const link = links[i];
+
+                const listItem = document.createElement('li');
+                let html = "<a href='?track=" + links[i].param + "&label=" + link.label + "'>" + link.label + "</a>&emsp;";
+                if(i < links.length - 1)
+                    html += "<a href='?track=" + links[i].param + "_admin&label=" + link.label + "'>(admin)</a>&emsp;";
+
+                listItem.innerHTML = html;
+                linkList.appendChild(listItem);
+            }
+
+            
+        }
+
+        createLinkList();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        let trackParam = urlParams.get('track');
+        let labelParam = urlParams.get('label');
+
+        if(trackParam == null) // auto select first
+        {
+            trackParam = links[0].param;
+            labelParam = links[0].label;
+        }
+
+        document.getElementById("table-title").innerHTML = labelParam;
+
+        const csvURL = "https://gliderushfunctions.blob.core.windows.net/webview/" + trackParam;
+
+        // Display the CSV as HTML table
+        displayCSV(csvURL);
+
+
+
+
+    </script>
+</body>
+
+</html>

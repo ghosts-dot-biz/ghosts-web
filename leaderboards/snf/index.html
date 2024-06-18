@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Spark Leaderboards</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+<div class="content">
+<h1>Phantom Spark - Steam Next Fest 2024 Demo Leaderboards</h1>
+
+<div id="links-container">
+    <ul id="link-list"></ul>
+</div>
+<h2><div id="table-title"></div></h2>
+<div id="table-container"></div>
+
+<script>
+    // If this becomes a drag, there's a file called "tracklist" on the blob storage that gets generated as well
+    // so you could read that in...
+    const links = [
+    
+            { label: 'P1.1 - Stone', param: 'Mass_V2_DEMO' }, 
+            { label: 'P1.2 - Smoke', param: 'Wings_V2_DEMO' }, 
+            { label: 'P1.3 - Magma', param: 'Dream_V2_DEMO' }, 
+            { label: 'Total Score', param: 'total_DEMO' }
+        ];
+
+
+    async function displayCSV(url) {
+        try {
+            const response = await fetch(url);
+            const csvData = await response.text();
+            const rows = csvData.split("\n");
+            let html = "<table>";
+
+            for (let i = 0; i < rows.length; i++) {
+                
+                const cells = rows[i].split(",");
+
+                if(cells.length <3) continue;
+
+                html += "<tr>";
+                for (let j = 0; j < cells.length; j++) {
+
+                    html += `<td class="cell${j}">`;
+
+                    if (j === 0) {
+                        html += `#${cells[j]}`;
+                    }
+                    else if (j === 1) {
+                        const timeInSeconds = parseInt(cells[j]) / 1000;
+                        const hours = Math.floor(timeInSeconds / 3600);
+                        const minutes = Math.floor((timeInSeconds % 3600) / 60);
+                        const seconds = (timeInSeconds % 60).toFixed(3);
+                        let formattedTime = '';
+
+                        if (hours > 0) {
+                            formattedTime += `${hours}h `;
+                        }
+                        if (minutes > 0 || hours > 0) {
+                            formattedTime += `${minutes}m `;
+                        }
+                        formattedTime += `${seconds.toString().padStart(6,"0")}`;
+
+                        html += `${formattedTime}`;
+                    }
+                    else if (j === 2) {
+                        html += `<img class="flag" src="../flags/${cells[j].toLowerCase()}.png" />`;
+                    }
+                    else {
+                        html += `${cells[j]}`;
+                    }
+
+                    html += `</td>`;
+                }
+
+                
+                html += "</tr>";
+            }
+            
+            
+
+
+            html += "</table>";
+            html += `${rows[0]}`;
+
+            document.getElementById("table-container").innerHTML = html;
+        } catch (error) {
+            console.error("Error fetching CSV:", error);
+        }
+    }
+
+    function createLinkList() {
+        const linkList = document.getElementById('link-list');
+
+
+        for (let i = 0; i < links.length; i += 1) {
+
+            const link = links[i];
+
+            const listItem = document.createElement('li');
+            let html = "<a href='?track=" + links[i].param + "&label=" + link.label + "'>" + link.label + "</a>&emsp;";
+            // if(i < links.length - 1)
+            //     html += "<a href='?track=" + links[i].param + "_admin&label=" + link.label + "'>(admin)</a>&emsp;";
+
+            listItem.innerHTML = html;
+            linkList.appendChild(listItem);
+        }
+
+        
+    }
+
+    createLinkList();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    let trackParam = urlParams.get('track');
+    let labelParam = urlParams.get('label');
+
+    if(trackParam == null) // auto select first
+    {
+        trackParam = links[0].param;
+        labelParam = links[0].label;
+    }
+
+    document.getElementById("table-title").innerHTML = labelParam;
+
+    const csvURL = "data/" + trackParam;
+
+    // Display the CSV as HTML table
+    displayCSV(csvURL);
+
+
+
+
+</script>
+</div>
+</body>
+
+</html>
