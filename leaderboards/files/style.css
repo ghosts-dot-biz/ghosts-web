@@ -92,15 +92,13 @@ height:15px;
 }
 
 .cell0 {
-width: 50px;
+max-width: 50px;
 }
 .cell1 {
-width: 100px;
-text-transform: full-width;
-
+max-width: 100px;
 }
 .cell2 {
-width: 30px;
+max-width: 30px;
 }
 
 .pill-link {
