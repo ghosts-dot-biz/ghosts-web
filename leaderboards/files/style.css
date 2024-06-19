@@ -1,0 +1,154 @@
+@font-face {
+font-family: 'Chakra';
+src: url('fonts/ChakraPetch-Medium.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+font-family: 'Chakra';
+src: url('fonts/ChakraPetch-Bold.ttf') format('truetype');
+font-weight: bold;
+font-style: normal;
+}
+@font-face {
+font-family: 'Dislope';
+src: url('fonts/Dislope\ Display\ Regular.otf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+body {
+font-family: Chakra, Arial, sans-serif; /* Default sans-serif font */
+font-weight: bold;
+
+color: #FFEDD4; /* Light text color */
+background: no-repeat center center fixed;
+background-color: #333; /* Dark background color */
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;          /* optional, center the image */
+margin:0;
+text-align: center;
+}
+
+
+.wrapper {
+padding: 0px;
+padding-top:30px;
+max-width: 750px;
+margin:auto;
+background: rgb(67 41 41 / 70%);
+}
+
+.content {
+margin: auto;
+padding: 50px;
+margin:100 px;
+}
+
+#table-container {
+border: 30px solid;
+border-image: url(panel.png);
+border-image-slice: 40 fill;
+}
+
+
+table {
+border-collapse: collapse;
+width: 100%;
+margin-top: -10px;
+}
+
+h2 {
+font-family: Dislope, Arial, Helvetica, sans-serif;
+text-transform: uppercase;
+color: #F7C232;
+font-size:5em;
+margin:0;
+}
+
+h3 {
+text-transform: uppercase;
+font-weight: normal;
+margin: 10px;
+margin-top: 25px;
+}
+
+th, td {
+border-bottom: 1px solid #767162; /* Darker border color */
+text-align: left;
+padding: 12px;
+}
+
+
+tr:hover {
+background-color: #4329294d; /* Darker hover background color */
+}
+
+.flag {
+width:25px;
+height:15px;
+}
+
+.cell0 {
+width: 50px;
+}
+.cell1 {
+width: 100px;
+text-transform: full-width;
+
+}
+.cell2 {
+width: 30px;
+}
+
+.pill-link {
+display: inline-block;
+padding: 10px 20px;
+border: 2px solid #FFEDD44d;
+border-radius: 50px;
+color: #FFEDD4;
+text-decoration: none;
+font-size: 16px;
+transition: background-color 0.3s, color 0.3s;
+text-transform: uppercase;
+font-family: Chakra, Arial;
+font-weight: normal;
+text-decoration: none;
+font-size:0.8em;
+margin-left:3px;
+margin-right:3px;
+}
+
+.pill-link:hover {
+    background-color: #FFEDD44d;
+    color: #fff;
+}
+
+.highlighted {
+    background-color: #fff4d4;
+    color: #333;
+}
+
+.updated {
+    font-weight: normal;
+    text-align: right;
+}
+
+.logo img{
+    max-width: 50%;
+    margin:0 auto;
+    text-align: center;
+    padding:30px;
+}
+
+.banner img {
+    max-width: 100%;
+    margin:0 auto;
+    text-align: center;
+}
+
+#snfbanner {
+    display:none;
+}

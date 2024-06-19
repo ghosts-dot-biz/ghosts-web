@@ -2,126 +2,144 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phantom Spark Leaderboards</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phantom Spark Leaderboards</title>
+<link rel="stylesheet" href="files/style.css">
 </head>
 
 <body>
+<div class="wrapper">
 
-    <h1>
-        <div id="table-title"></div>
-    </h1>
-    <div id="links-container">
-        <ul id="link-list"></ul>
-    </div>
-    <div id="table-container"></div>
-    
-    <script>
-        // If this becomes a drag, there's a file called "tracklist" on the blob storage that gets generated as well
-        // so you could read that in...
-        const links = [
-        
-                { label: 'DEMO P1.1 - Stone', param: 'Mass_V2_DEMO' }, 
-                { label: 'DEMO P1.2 - Smoke', param: 'Wings_V2_DEMO' }, 
-                { label: 'DEMO P1.3 - Magma', param: 'Dream_V2_DEMO' }, 
-                { label: 'TOTAL SCORE', param: 'total_DEMO' }
-            ];
+<div class="logo"><img src="files/logo.png"></div>
+
+<h3>Wishlist & Play Demo</h3>
+<a href="https://store.steampowered.com/app/1924180/Phantom_Spark/"><div class="pill-link highlighted">Steam Page</div></a>
+<br>
+<h3>Live Leaderboards</h3>
+<a href="?track=Mass_V2_DEMO&label=Stone"><div class="pill-link">Stone</div></a>
+<a href="?track=Wings_V2_DEMO&label=Smoke"><div class="pill-link">Smoke</div></a>
+<a href="?track=Dream_V2_DEMO&label=Magma"><div class="pill-link">Magma</div></a>
+<a href="?track=total_DEMO&label=Total score"><div class="pill-link">Total score</div></a>
 
 
-        async function displayCSV(url) {
-            try {
-                const response = await fetch(url);
-                const csvData = await response.text();
-                const rows = csvData.split("\n");
-                let html = "<table>";
+<br>
+<h3>Steam Next Fest (Archive)</h3>
+<a href="?track=Mass_V2_DEMO&label=Stone&snf=1"><div class="pill-link">Stone</div></a>
+<a href="?track=Wings_V2_DEMO&label=Smoke&snf=1"><div class="pill-link">Smoke</div></a>
+<a href="?track=Dream_V2_DEMO&label=Magma&snf=1"><div class="pill-link">Magma</div></a>
+<a href="?track=total_DEMO&label=Total score&snf=1"><div class="pill-link">Total score</div></a>
+<br>
 
-                for (let i = 0; i < rows.length; i++) {
-                    html += "<tr>";
-                    const cells = rows[i].split(",");
-                    for (let j = 0; j < cells.length; j++) {
+<br><br>
 
-                        if (j === 1) {
-                            const timeInSeconds = parseInt(cells[j]) / 1000;
-                            const hours = Math.floor(timeInSeconds / 3600);
-                            const minutes = Math.floor((timeInSeconds % 3600) / 60);
-                            const seconds = (timeInSeconds % 60).toFixed(3);
-                            let formattedTime = '';
-
-                            if (hours > 0) {
-                                formattedTime += `${hours}h `;
-                            }
-                            if (minutes > 0 || hours > 0) {
-                                formattedTime += `${minutes}m `;
-                            }
-                            formattedTime += `${seconds.toString().padStart(6,"0")}`;
-
-                            html += `<td>${formattedTime}</td>`;
-                        }
-                        else if (j === 2) {
-                            html += `<td><img class="flag" src="flags/${cells[j].toLowerCase()}.png" /></td>`;
-                        }
-                        else {
-                            html += `<td>${cells[j]}</td>`;
-                        }
-                    }
-                    html += "</tr>";
-                }
+<div id="snfbanner" class="banner"><img src="files/NextFestJune2024Banner.jpg"></div>
+<br><br>
+<h2 id="table-title"></h2>
 
 
-                html += "</table>";
+<div class="content">
+<div id="table-container"></div>
 
-                document.getElementById("table-container").innerHTML = html;
-            } catch (error) {
-                console.error("Error fetching CSV:", error);
-            }
-        }
-
-        function createLinkList() {
-            const linkList = document.getElementById('link-list');
-
-
-            for (let i = 0; i < links.length; i += 1) {
-
-                const link = links[i];
-
-                const listItem = document.createElement('li');
-                let html = "<a href='?track=" + links[i].param + "&label=" + link.label + "'>" + link.label + "</a>&emsp;";
-                // if(i < links.length - 1)
-                //     html += "<a href='?track=" + links[i].param + "_admin&label=" + link.label + "'>(admin)</a>&emsp;";
-
-                listItem.innerHTML = html;
-                linkList.appendChild(listItem);
-            }
-
-            
-        }
-
-        createLinkList();
-
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        let trackParam = urlParams.get('track');
-        let labelParam = urlParams.get('label');
-
-        if(trackParam == null) // auto select first
-        {
-            trackParam = links[0].param;
-            labelParam = links[0].label;
-        }
-
-        document.getElementById("table-title").innerHTML = labelParam;
-
-        const csvURL = "https://gliderushfunctions.blob.core.windows.net/webview/" + trackParam;
-
-        // Display the CSV as HTML table
-        displayCSV(csvURL);
-
-
-
-
-    </script>
+</div>
+</div>
 </body>
-
 </html>
+
+
+<script>
+    async function displayCSV(url) {
+        try {
+            const response = await fetch(url);
+            const csvData = await response.text();
+            const rows = csvData.split("\n");
+            let html = "<table>";
+
+            for (let i = 0; i < rows.length; i++) {
+                
+                const cells = rows[i].split(",");
+
+                if(cells.length <3) continue;
+
+                html += "<tr>";
+
+                for (let j = 0; j < cells.length; j++) {
+
+                    html += `<td class="cell${j}">`;
+
+                    if (j === 0) {
+                        html += `#${cells[j]}`;
+                    }
+                    else if (j === 1) {
+                        const timeInSeconds = parseInt(cells[j]) / 1000;
+                        const hours = Math.floor(timeInSeconds / 3600);
+                        const minutes = Math.floor((timeInSeconds % 3600) / 60);
+                        const seconds = (timeInSeconds % 60).toFixed(3);
+                        let formattedTime = '';
+
+                        if (hours > 0) {
+                            formattedTime += `${hours}h `;
+                        }
+                        if (minutes > 0 || hours > 0) {
+                            formattedTime += `${minutes}m `;
+                        }
+                        formattedTime += `${seconds.toString().padStart(6,"0")}`;
+
+                        html += `${formattedTime}`;
+                    }
+                    else if (j === 2) {
+                        html += `<img class="flag" src="flags/${cells[j].toLowerCase()}.png" />`;
+                    }
+                    else {
+                        html += `${cells[j]}`;
+                    }
+
+                    html += `</td>`;
+
+                    if(j >=3)
+                    {
+                        break
+                    };
+                }
+                html += "</tr>";
+            }
+            html += "</table>";
+            html += `<p class="updated">${rows[0]}</p>`;
+
+            document.getElementById("table-container").innerHTML = html;
+        } catch (error) {
+            console.error("Error fetching CSV:", error);
+        }
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    let trackParam = urlParams.get('track');
+    let labelParam = urlParams.get('label');
+    let snfParam = urlParams.get('snf') >= 1;
+
+    if(trackParam == null) // auto select first
+    {
+        trackParam = "Mass_V2_DEMO";
+        labelParam = "STONE";
+    }
+
+    document.getElementById("table-title").innerHTML = labelParam;
+
+    const csvURL_snf = "snf/" + trackParam;
+    const csvURL_live = "https://gliderushfunctions.blob.core.windows.net/webview/" + trackParam;
+
+    let csvURL = (snfParam ? csvURL_snf : csvURL_live);
+
+    // Display the CSV as HTML table
+    displayCSV(csvURL);
+
+    if(snfParam) 
+        document.getElementById("snfbanner").style.display = "block";
+
+
+    const bgImgs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13,14,15,16,17,18];
+    let number = bgImgs[Math.floor(Math.random() * bgImgs.length)];
+    document.body.style.backgroundImage = "url('files/bg"+ number + ".jpeg')";
+
+</script>
