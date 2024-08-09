@@ -161,9 +161,9 @@ body, html {
 
 .teamcol
 {
-    width: 50%;
+    width: 49%;
     min-width:300px;
-    float:left;
+    display:inline-block;
 }
 
 .footericons {
